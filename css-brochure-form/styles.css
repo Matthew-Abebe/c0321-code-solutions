@@ -1,0 +1,52 @@
+h1 {
+  text-align: center;
+  font-family: "Roboto", Arial, sans-serif;
+  color: #ff5d5d;
+}
+
+/* I Want to align the form but do not want labels to be centered */
+
+form {
+  text-align: center;
+
+  /* margin-left: auto;
+  margin-right: auto; */
+}
+
+input {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 12px 0 12px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+label {
+  display: block;
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+select {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: lightgray;
+}
+
+button {
+  position: absolute;
+  right: 25%;
+  border-radius: 30px;
+  border: none;
+  padding: 15px 30px;
+  background-color: #ff5d5d;
+  color: #ffff;
+}
