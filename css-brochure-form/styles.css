@@ -2,19 +2,22 @@ h1 {
   text-align: center;
   font-family: "Roboto", Arial, sans-serif;
   color: #ff5d5d;
+  font-size: 16px;
 }
 
 /* I Want to align the form but do not want labels to be centered */
 
-form {
+/* form {
   text-align: center;
+} */
 
-  /* margin-left: auto;
-  margin-right: auto; */
+div#input-container {
+  display: flex;
+  justify-content: center;
 }
 
 input {
-  width: 50%;
+  width: 100%;
   padding: 12px 20px;
   margin: 12px 0 12px 0;
   display: inline-block;
@@ -31,7 +34,7 @@ label {
 }
 
 select {
-  width: 50%;
+  width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
