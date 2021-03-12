@@ -1,15 +1,10 @@
 h1 {
   text-align: center;
-  font-family: "Roboto", Arial, sans-serif;
+  font-family: "Montserrat", Arial, sans-serif;
   color: #ff5d5d;
-  font-size: 16px;
+  font-size: 20px;
+  font-weight: 600;
 }
-
-/* I Want to align the form but do not want labels to be centered */
-
-/* form {
-  text-align: center;
-} */
 
 div#input-container {
   display: flex;
@@ -28,7 +23,7 @@ input {
 
 label {
   display: block;
-  font-family: "Roboto", Arial, sans-serif;
+  font-family: "Montserrat", Arial, sans-serif;
   font-weight: 600;
   font-size: 12px;
 }
@@ -41,18 +36,17 @@ select {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
-  background-color: lightgray;
+  background-color: #eee;
 }
 
 button {
-  position: absolute;
-  right: 32%;
   border-radius: 30px;
   border: none;
-  padding: 15px 30px;
+  padding: 10px 20px;
   background-color: #ff5d5d;
   color: #ffff;
   display: block;
-  font-family: "Roboto", Arial, sans-serif;
-  font-weight: 100;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-weight: bold;
+  margin-left: 325px;
 }
