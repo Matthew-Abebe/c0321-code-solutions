@@ -46,10 +46,13 @@ select {
 
 button {
   position: absolute;
-  right: 25%;
+  right: 32%;
   border-radius: 30px;
   border: none;
   padding: 15px 30px;
   background-color: #ff5d5d;
   color: #ffff;
+  display: block;
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 100;
 }
