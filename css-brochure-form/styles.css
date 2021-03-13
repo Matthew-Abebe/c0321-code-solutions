@@ -46,13 +46,12 @@ button {
   padding: 10px 20px;
   background-color: #ff5d5d;
   color: #ffff;
-  display: block;
   font-family: "Montserrat", Arial, sans-serif;
   font-weight: bold;
 
   /* text-align: right; */
 }
 
-div > button {
+div#submitButton {
   text-align: right;
 }
