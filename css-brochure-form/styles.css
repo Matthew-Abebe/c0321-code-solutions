@@ -49,5 +49,10 @@ button {
   display: block;
   font-family: "Montserrat", Arial, sans-serif;
   font-weight: bold;
-  margin-left: 325px;
+
+  /* text-align: right; */
+}
+
+div > button {
+  text-align: right;
 }
