@@ -27,8 +27,8 @@ p {
 
 .column-one-third {
   width: calc(100% / 3);
-  margin-left: 24px;
-  margin-right: 24px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .container {
