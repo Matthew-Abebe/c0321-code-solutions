@@ -40,7 +40,12 @@ p {
   margin-right: 100px;
 }
 
-/* img {
+/*
+img {
+  float: left;
+} */
+
+/* div.healthCareIcon {
   float: left;
 } */
 
