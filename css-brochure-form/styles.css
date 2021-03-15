@@ -1,0 +1,57 @@
+h1 {
+  text-align: center;
+  font-family: "Montserrat", Arial, sans-serif;
+  color: #ff5d5d;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+div#input-container {
+  display: flex;
+  justify-content: center;
+}
+
+input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 12px 0 12px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+label {
+  display: block;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-weight: 600;
+  font-size: 10px;
+  text-indent: 10px;
+}
+
+select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: #eee;
+}
+
+button {
+  border-radius: 30px;
+  border: none;
+  padding: 10px 20px;
+  background-color: #ff5d5d;
+  color: #ffff;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-weight: bold;
+
+  /* text-align: right; */
+}
+
+div#submitButton {
+  text-align: right;
+}
