@@ -6,8 +6,12 @@ function handleClick(event) {
   console.log('event.target: ', event.target);
   console.log('event.target.tagName: ', event.target.tagName);
 
-  console.log(event.target.closest('.task-list-item'));
+  if (event.target.tagname !== 'Button') {
+    return;
+  }
 
-  var closestEl = event.target.closest('.task-list-item');
-  closestEl.remove();
+  var taskListItem = event.target.closest('.task-list-item');
+  console.log('closest .task-list-item', taskListItem);
+  taskListItem.remove();
+
 }
