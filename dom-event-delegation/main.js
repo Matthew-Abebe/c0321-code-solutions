@@ -6,7 +6,7 @@ function handleClick(event) {
   console.log('event.target: ', event.target);
   console.log('event.target.tagName: ', event.target.tagName);
 
-  if (event.target.tagname !== 'Button') {
+  if (event.target.tagName !== 'BUTTON') {
     return;
   }
 
