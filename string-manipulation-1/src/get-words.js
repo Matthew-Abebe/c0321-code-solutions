@@ -8,9 +8,7 @@ function getWords(string) {
     return arr;
   }
 
-  for (var i = 0; i < string.length; i++) {
-    var word = string.split(' ');
+  var word = string.split(' ');
 
-  }
   return (word);
 }
