@@ -66,7 +66,7 @@ function renderPokemon(pokemon) {
   var pokemonCardDivEl = document.createElement('div');
   pokemonCardDivEl.className = 'pokemon-card';
   var pokemonImageEl = document.createElement('img');
-  pokemonImageEl.src = pokemon.imageUrl; // similar to this for additional pokemon info.
+  pokemonImageEl.src = pokemon.imageUrl;
   var pokemonCardTextDivEl = document.createElement('div');
   pokemonCardTextDivEl.className = 'pokemon-card-text';
   var pokemonHeaderEl = document.createElement('h2');
@@ -82,10 +82,10 @@ function renderPokemon(pokemon) {
   rowEl.appendChild(columnThirdDivEl);
   columnThirdDivEl.appendChild(pokemonCardDivEl);
   pokemonCardDivEl.appendChild(pokemonImageEl);
-  pokemonImageEl.insertAdjacentElement('afterend', pokemonCardTextDivEl);
+  pokemonCardDivEl.appendChild(pokemonCardTextDivEl);
   pokemonCardTextDivEl.appendChild(pokemonHeaderEl);
-  pokemonHeaderEl.insertAdjacentElement('afterend', pokemonNumberEl);
-  pokemonNumberEl.insertAdjacentElement('afterend', pokemonDescriptionEl);
+  pokemonCardTextDivEl.appendChild(pokemonNumberEl);
+  pokemonCardTextDivEl.appendChild(pokemonDescriptionEl);
 
 }
 
