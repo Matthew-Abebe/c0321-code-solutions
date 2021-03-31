@@ -86,7 +86,6 @@ function renderPokemon(pokemon) {
   pokemonCardTextDivEl.appendChild(pokemonHeaderEl);
   pokemonCardTextDivEl.appendChild(pokemonNumberEl);
   pokemonCardTextDivEl.appendChild(pokemonDescriptionEl);
-
 }
 
 pokedex.forEach(pokemon => renderPokemon(pokemon));
