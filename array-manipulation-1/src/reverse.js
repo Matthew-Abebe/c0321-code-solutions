@@ -6,5 +6,5 @@ function reverse(array) {
   for (var i = array.length - 1; i >= 0; i--) {
     newArr.push(array[i]);
   }
-  return (newArr);
+  return newArr;
 }

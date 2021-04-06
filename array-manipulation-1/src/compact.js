@@ -8,5 +8,5 @@ function compact(array) {
       newArr.push(array[i]);
     }
   }
-  return (newArr);
+  return newArr;
 }

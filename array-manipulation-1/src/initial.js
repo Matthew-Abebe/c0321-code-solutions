@@ -7,5 +7,5 @@ function initial(array) {
     var item = array[i];
     newArr.push(item);
   }
-  return (newArr);
+  return newArr;
 }
