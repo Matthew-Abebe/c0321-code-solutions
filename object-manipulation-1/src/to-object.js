@@ -2,7 +2,7 @@
 
 function toObject(keyValuePair) {
   var object = {
-    key: keyValuePair
+    keyValuePair: ''
   };
   return object;
 }
