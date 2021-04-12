@@ -81,24 +81,29 @@ xhrProfitability.responseType = 'json';
 xhrProfitability.addEventListener('load', handleLoadProfitability);
 
 function handleLoadProfitability(event) {
-  // console.log('xhr status: ', xhr.status);
-  // console.log('xhr response: ', xhr.response);
+  console.log('xhr status: ', xhrProfitability.status);
+  console.log('xhr response: ', xhrProfitability.response);
 
-  // Logs for Historical Price Data
-  console.log('50DayMovingAverage: ', xhr.response['50DayMovingAverage']);
-  console.log('200DayMovingAverage: ', xhr.response['200DayMovingAverage']);
-  console.log('52WeekHigh: ', xhr.response['52WeekHigh']);
-  console.log('52WeekLow: ', xhr.response['52WeekLow']);
-  console.log('Analyst Target Price: ', xhr.response.AnalystTargetPrice);
+  // Variables for Profitability Measures
 
-  // Logs for Key Performance Indicators (KPIs)
+  // Return on Assests (ROA) TTM
+  var returnOnAssetsTTM = xhrProfitability.response.ReturnOnAssetsTTM;
 
-  // Logs for Financial Ratios
+  console.log('Return-on-Assets-TTM: ', returnOnAssetsTTM);
 
-  // Logs for Risk Measures
+  // Return on Equity (ROE) TTM
+  var returnOnEquityTTM = xhrProfitability.response.ReturnOnEquityTTM;
 
-  // Profitability: ROA, ROE, Profit Margin
+  console.log('Return-on-Equity-TTM: ', returnOnEquityTTM);
 
+  // Operating Margin TTM
+  var operatingMarginTTM = xhrProfitability.response.OperatingMarginTTM;
+
+  console.log('Operating-Margin: ', operatingMarginTTM);
+
+  // Profit Margin
+  var profitMargin = xhrProfitability.response.ProfitMargin;
+  console.log('Profit-Margin: ', profitMargin);
 }
 
 var xhrLiquiditySolvency = new XMLHttpRequest();
@@ -112,8 +117,8 @@ xhrLiquiditySolvency.responseType = 'json';
 xhrLiquiditySolvency.addEventListener('load', handleLoadLiquiditySolvency);
 
 function handleLoadLiquiditySolvency(event) {
-  console.log('xhrLiquiditySolvency status: ', xhrLiquiditySolvency.status);
-  console.log('xhrLiquiditySolvency response: ', xhrLiquiditySolvency.response);
+  // console.log('xhrLiquiditySolvency status: ', xhrLiquiditySolvency.status);
+  // console.log('xhrLiquiditySolvency response: ', xhrLiquiditySolvency.response);
 
   // Variables for Liquidity/Solvency Measures
 
@@ -132,17 +137,44 @@ function handleLoadLiquiditySolvency(event) {
   console.log('Debt-to-Equity-Ratio: ', debtToEquityRatio);
 
   // Total-Debt-to-Total-Assets-Ratio
-  var shortTermDebt = xhrLiquiditySolvency.response.annualReports[0].shortTermDebt;
-  var longTermDebt = xhrLiquiditySolvency.response.annualReports[0].longTermDebt;
+  // var shortTermDebt = xhrLiquiditySolvency.response.annualReports[0].shortTermDebt;
+  // var longTermDebt = xhrLiquiditySolvency.response.annualReports[0].longTermDebt;
   var totalAssets = xhrLiquiditySolvency.response.annualReports[0].totalAssets;
-  var totalDebtToTotalAssests = shortTermDebt + longTermDebt / totalAssets;
+  var DebtToAssests = totalLiabilities / totalAssets;
 
-  console.log('Total-Debt-to-Total-Assets: ', totalDebtToTotalAssests);
+  console.log('Total-Debt-to-Total-Assets: ', DebtToAssests);
 
   // Quick Ratio
   var inventory = xhrLiquiditySolvency.response.annualReports[0].inventory;
   var quickRatio = totalCurrentAssests - inventory / totalCurrentLiabilities;
 
   console.log(quickRatio);
+}
+
+var xhrValuation = new XMLHttpRequest();
+
+xhrValuation.open('GET', 'https://www.alphavantage.co/query?function=OVERVIEW&symbol=IBM&apikey=HKX3MUJHRZLOUZ85');
+xhrValuation.send();
+
+xhrValuation.responseType = 'json';
+
+xhrValuation.addEventListener('load', handleLoadValuation);
+
+function handleLoadValuation(event) {
+  // console.log('xhr status: ', xhr.status);
+  // console.log('xhr response: ', xhr.response);
+
+  // Logs for Key Performance Indicators (KPIs)
+
+  // Logs for Financial Ratios
+
+  // Logs for Risk Measures
+
+  // Variables for valuation
+
+  // PE Ratio
+  // PEG Ratio
+  // PB Ratio
+  // PS Ratio
 
 }
