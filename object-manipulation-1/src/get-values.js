@@ -6,5 +6,5 @@ function getValues(object) {
   for (var i in object) {
     newArr.push(object[i]);
   }
-  return (newArr);
+  return newArr;
 }

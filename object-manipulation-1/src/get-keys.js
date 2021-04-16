@@ -2,11 +2,10 @@
 
 function getKeys(object) {
   var newArr = [];
-  var key;
 
-  for (key in object) {
+  for (var key in object) {
     newArr.push(key);
   }
 
-  return (newArr);
+  return newArr;
 }

@@ -1,13 +1,8 @@
 /* exported toObject */
 
 function toObject(keyValuePair) {
-  // creating object
   var object = {};
-  // adding property to object
-  object[keyValuePair] = '';
+  object[keyValuePair[0]] = keyValuePair[1];
   //
   return object;
 }
-
-/* first first element of the array should be used as the key
-and the second element should be used as the value */
