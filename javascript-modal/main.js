@@ -1,7 +1,7 @@
-var openModalButton = document.querySelector('.open-modal');
+var modalButtonEl = document.getElementsByClassName('open-modal');
 
-openModalButton.addEventListener('click', handleClick);
+modalButtonEl.addEventListener('click', handleClick);
 
-function handleClick(event) {
-  // console.log('hello');
+function handleClick() {
+  console.log('hello');
 }
