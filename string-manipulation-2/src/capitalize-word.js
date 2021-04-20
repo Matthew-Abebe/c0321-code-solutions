@@ -2,10 +2,11 @@
 
 function capitalizeWord(word) {
 
-  if (word === 'jaVAsCrIPt' || word === 'javascript' || word === 'javaScript' || word === 'JavascRipt') {
+  word = word.toLowerCase();
+
+  if (word === 'javascript') {
     return 'JavaScript';
   }
-  word = word.toLowerCase();
 
   var lettersArr = [];
   var newArr = [];
