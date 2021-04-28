@@ -3,19 +3,16 @@
 function swapChars(firstIndex, secondIndex, string) {
   var newArr = string.split('');
 
-  firstIndex = newArr[firstIndex];
-  secondIndex = newArr[secondIndex];
-  var temp;
+  var first = newArr[firstIndex];
+  var second = newArr[secondIndex];
 
-  temp = firstIndex;
-  firstIndex = secondIndex;
-  secondIndex = temp;
+  newArr[firstIndex] = second;
+  newArr[secondIndex] = first;
 
-  console.log(firstIndex, secondIndex);
+  console.log(first, second);
 
   string = newArr.join('');
+  console.log(string);
 
   return string;
 }
-
-// Swapping characters but trouble returning string.
