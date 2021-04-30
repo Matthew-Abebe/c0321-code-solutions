@@ -27,5 +27,20 @@ fs.readFile('data.json', 'utf-8', (err, data) => {
       if (err) throw err;
       console.log('The note has been removed!');
     });
+  } else if (process.argv[2] === 'replace') {
+    // Parse obj
+    const obj = JSON.parse(data);
+    // Modify Obj
+    obj.notes[process.argv[3]] = process.argv[4];
+
+    const result = JSON.stringify(obj, null, 2);
+
+    fs.writeFile('data.json', result, err => {
+      if (err) throw err;
+      console.log('The note has been saved!');
+    });
   }
 });
+
+// need to use for loop to find the one that has the id.
+// want to check if the id i am looking at is equal to the id.
