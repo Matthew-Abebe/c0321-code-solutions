@@ -1,7 +1,17 @@
-var modalButtonEl = document.getElementsByClassName('open-modal');
+var showModalButtonEl = document.getElementById('open-modal');
+var hideModalButtonEl = document.getElementById('close-modal');
+var modal = document.querySelector('.modal-container');
 
-modalButtonEl.addEventListener('click', handleClick);
+showModalButtonEl.addEventListener('click', handleShowClick);
 
-function handleClick() {
-  console.log('hello');
+function handleShowClick() {
+  modal.classList.remove('hidden');
+  document.body.style.backgroundColor = '#333';
+}
+
+hideModalButtonEl.addEventListener('click', handleHideClick);
+
+function handleHideClick() {
+  modal.classList.add('hidden');
+  document.body.style.backgroundColor = '#ffff';
 }
