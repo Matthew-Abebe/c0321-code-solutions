@@ -37,7 +37,7 @@ fs.readFile('data.json', 'utf-8', (err, data) => {
 
     fs.writeFile('data.json', result, err => {
       if (err) throw err;
-      console.log('The note has been saved!');
+      console.log('The note has been updated!');
     });
   }
 });
