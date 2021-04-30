@@ -8,18 +8,28 @@
   border-radius: 5px;
 }
 
+.backdrop {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0%;
+  right: 0%;
+  bottom: 0%;
+  left: 0%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
 .modal-container {
-  position: absolute;
+  position: fixed;
   background-color: white;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  align-items: center;
+  justify-content: center;
   height: 150px;
   width: 350px;
   padding: 20px;
   text-align: center;
   box-sizing: content-box;
-  box-shadow: #3333;
   border: solid 1px oldlace;
   border-radius: 5px;
 }

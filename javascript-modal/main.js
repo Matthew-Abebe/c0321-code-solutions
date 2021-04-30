@@ -1,17 +1,15 @@
 var showModalButtonEl = document.getElementById('open-modal');
 var hideModalButtonEl = document.getElementById('close-modal');
-var modal = document.querySelector('.modal-container');
+var backdrop = document.querySelector('.backdrop');
 
 showModalButtonEl.addEventListener('click', handleShowClick);
 
 function handleShowClick() {
-  modal.classList.remove('hidden');
-  document.body.style.backgroundColor = '#333';
+  backdrop.classList.remove('hidden');
 }
 
 hideModalButtonEl.addEventListener('click', handleHideClick);
 
 function handleHideClick() {
-  modal.classList.add('hidden');
-  document.body.style.backgroundColor = '#ffff';
+  backdrop.classList.add('hidden');
 }
