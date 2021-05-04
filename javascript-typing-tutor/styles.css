@@ -1,9 +1,18 @@
 div.characters-container {
-  text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  align-content: center;
-  margin: 0 auto;
   font-size: 4vw;
+}
+
+span.first-letter {
+  text-decoration: underline;
+}
+
+.next-letter {
+  text-decoration: underline;
+}
+
+.active {
+  text-decoration: none;
 }

@@ -1,23 +1,17 @@
-
 document.addEventListener('keydown', handleKeydown);
 
+var index = 0;
 function handleKeydown(event) {
-  var index = 0;
   var characters = document.querySelectorAll('span');
   var characterPressed = event;
 
   if (characterPressed.key === characters[index].textContent) {
-    characters[0].style.color = ('green');
+    characters[index].style.color = ('green');
+    characters[index].className = ('active');
+    characters[index + 1].className = ('next-letter');
     index++;
-  } else {
-    characters[0].style.color = ('red');
+    console.log(index);
+  } else if (characterPressed.key !== characters[index].textContent) {
+    characters[index].style.color = ('red');
   }
-
-  if (characterPressed.key === characters[index].textContent) {
-    characters[1].style.color = ('green');
-    index++;
-  } else {
-    characters[1].style.color = ('red');
-  }
-
 }
