@@ -1,6 +1,6 @@
 const express = require('express');
 
-// const nextId = 1;
+let nextId = 1;
 const grades = {};
 
 const app = express();
@@ -17,7 +17,12 @@ var jsonMiddleware = express.json();
 app.use(jsonMiddleware);
 
 app.post('/api/grades', function (req, res) {
-  res.send(grades);
+  const newGrade = req.body;
+  const id = nextId++;
+  newGrade.id = id;
+  grades[id] = newGrade;
+  res.status(201);
+  res.json(newGrade);
 });
 
 app.listen(3000, () => {
