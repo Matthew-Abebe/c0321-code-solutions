@@ -1,5 +1,8 @@
-
+const fs = require('fs');
 const express = require('express');
+const { json } = require('express');
+
+let nextId = 5;
 
 const notes = {
   1: {
@@ -42,6 +45,56 @@ app.get('/api/notes/:id', function (req, res) {
   }
 
   res.json(notes[id]);
+});
+
+var jsonMiddleware = express.json();
+app.use(jsonMiddleware);
+
+app.post('/api/notes', function (req, res, err) {
+  const newNote = req.body;
+  const id = nextId++;
+  newNote.id = id;
+  notes[id] = newNote;
+
+  const result = JSON.stringify(newNote, null, 2);
+
+  fs.writeFile('data.json', result, function (err) {
+
+    if (!req.body.content) {
+      res.status(400);
+      res.json({ error: 'content is a required field' });
+    } else if (err) {
+      res.status(500);
+      (console.error(err));
+      res.json({ error: 'An unexpected error occurred.' });
+    } else {
+      res.status(201);
+      res.json(JSON.parse(result));
+    }
+  });
+});
+
+app.delete('/api/notes/:id', function (req, res) {
+  const id = req.params.id;
+  const result = JSON.stringify(notes, null, 2);
+
+  fs.writeFile('data.json', result, function (err) {
+
+    if (!id) {
+      res.status(400);
+      res.json({ error: 'An id is required' });
+    } else if (res[id]) {
+      res.status(404);
+      res.json({ error: 'id not found' });
+    } else if (err) {
+      res.status(500);
+      (console.error(err));
+      res.json({ error: 'An unexpected error occurred.' });
+    } else {
+      delete notes[id];
+      res.sendStatus(204);
+    }
+  });
 });
 
 app.listen(3000, () => {
