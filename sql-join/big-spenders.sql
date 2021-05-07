@@ -1,7 +1,7 @@
 select  "firstName",
         "lastName",
         "amount"
-from payments
+from "payments"
 join "customers" using ("customerId")
-order by amount desc
+order by "amount" desc
 limit 10;
