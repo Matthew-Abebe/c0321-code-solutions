@@ -1,3 +1,5 @@
-update "countries"
-set "name" = 'Murica'
-where "name" = 'United States';
+update "actors"
+set "firstName" = 'Baby',
+    "lastName" = 'Yoda'
+where "actorId" = '15';
+
