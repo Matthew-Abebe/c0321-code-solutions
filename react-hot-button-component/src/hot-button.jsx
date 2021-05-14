@@ -24,15 +24,15 @@ class HotButton extends React.Component {
 
     if (count > 0 && count < 3) {
       className = 'default';
-    } else if (count > 2 && count < 7) {
+    } else if (count > 2 && count < 6) {
       className = 'blue';
-    } else if (count > 5 && count < 10) {
+    } else if (count > 5 && count < 9) {
       className = 'purple';
-    } else if (count > 8 && count < 13) {
+    } else if (count > 8 && count < 12) {
       className = 'red';
     } else if (count > 11 && count < 15) {
       className = 'orange';
-    } else if (count > 14 && count < 17) {
+    } else if (count > 14 && count < 18) {
       className = 'yellow';
     } else if (count >= 18) {
       className = 'white';
