@@ -1,40 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-let count = 0;
-
 class HotButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isClicked: false,
-      color: this.newColor
+      clicks: 0
     };
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick() {
-    this.setState({ isClicked: true });
-    count++;
-    console.log(count);
+    const previousClicks = this.state.clicks;
+    const newClicks = previousClicks + 1;
+    this.setState({ clicks: newClicks });
   }
 
   render() {
     let className = 'color';
 
-    if (count > 0 && count < 3) {
+    if (this.state.clicks > 0 && this.state.clicks < 3) {
       className = 'default';
-    } else if (count > 2 && count < 6) {
+    } else if (this.state.clicks > 2 && this.state.clicks < 6) {
       className = 'blue';
-    } else if (count > 5 && count < 9) {
+    } else if (this.state.clicks > 5 && this.state.clicks < 9) {
       className = 'purple';
-    } else if (count > 8 && count < 12) {
+    } else if (this.state.clicks > 8 && this.state.clicks < 12) {
       className = 'red';
-    } else if (count > 11 && count < 15) {
+    } else if (this.state.clicks > 11 && this.state.clicks < 15) {
       className = 'orange';
-    } else if (count > 14 && count < 18) {
+    } else if (this.state.clicks > 14 && this.state.clicks < 18) {
       className = 'yellow';
-    } else if (count >= 18) {
+    } else if (this.state.clicks >= 18) {
       className = 'white';
     } else {
       className = 'default';
