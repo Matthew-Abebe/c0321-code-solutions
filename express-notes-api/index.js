@@ -1,6 +1,6 @@
 const fs = require('fs');
 const express = require('express');
-const { json } = require('express');
+const { error } = require('console');
 
 let nextId = 5;
 
@@ -36,12 +36,14 @@ app.get('/api/notes', function (req, res) {
 app.get('/api/notes/:id', function (req, res) {
   const id = req.params.id;
 
-  if (id < 0) {
+  if (id < 0 || isNaN(id)) {
     res.status(400);
     res.json({ error: 'id must be a postive integer.' });
   } else if (!notes[id]) {
     res.status(404);
-    res.json({ error: `cannot find note with id ${notes[id]}.` });
+    res.json({ error: `cannot find note with id ${id}.` });
+  } else {
+    res.status(200);
   }
 
   res.json(notes[id]);
@@ -78,23 +80,56 @@ app.delete('/api/notes/:id', function (req, res) {
   const id = req.params.id;
   const result = JSON.stringify(notes, null, 2);
 
-  fs.writeFile('data.json', result, function (err) {
+  fs.writeFile('data.json', result, function () {
 
-    if (!id) {
+    if (id < 0 || isNaN(id)) {
       res.status(400);
-      res.json({ error: 'An id is required' });
-    } else if (res[id]) {
+      res.json({ error: 'id must be a postive integer.' });
+    } else if (!notes[id]) {
       res.status(404);
-      res.json({ error: 'id not found' });
-    } else if (err) {
-      res.status(500);
-      (console.error(err));
-      res.json({ error: 'An unexpected error occurred.' });
+      res.json({ error: `cannot find note with id ${id}.` });
     } else {
       delete notes[id];
-      res.sendStatus(204);
+      res.status(204);
     }
   });
+});
+
+app.put('/api/notes/:id', function (req, res, err) {
+
+  const id = req.params.id;
+  const updatedNote = req.body.content;
+
+  if (id < 0 || isNaN(id)) {
+    res.status(400);
+    res.json({ error: 'id must be a postive integer.' });
+  } else if (typeof updatedNote !== 'string') {
+    res.status(400);
+    res.json({ error: 'content is a required field' });
+  } else if (notes[id] === undefined) {
+    res.status(404);
+    res.json({ error: `cannot find note with id ${id}.` });
+  } else {
+
+    const targetNote = notes[id];
+    const writtenNotes = notes;
+    targetNote.content = updatedNote;
+    const result = JSON.stringify(writtenNotes, null, 2);
+
+    console.log('typeof updatedNote: ', typeof updatedNote);
+    console.log('value updatedNote: ', updatedNote);
+
+    fs.writeFile('data.json', result, function (err) {
+      if (err) {
+        res.status(500);
+        console.error(error.message);
+        res.json({ error: 'something broke!' });
+      } else {
+        res.status(200);
+        res.json(result);
+      }
+    });
+  }
 });
 
 app.listen(3000, () => {
