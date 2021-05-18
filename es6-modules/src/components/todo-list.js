@@ -1,10 +1,4 @@
-import { noop } from '../lib';
-import TodoList from './todo-list';
-import TodoForm from './todo-form';
-import { createElement } from '../lib'
-
-// const { createElement } = require('../lib');
-export const { createElement } = require('../lib');
+import { createElement } from '../lib';
 
 class TodoList {
   constructor(onToggle) {
@@ -55,4 +49,4 @@ class TodoList {
   }
 }
 
-// module.exports = TodoList;
+export default TodoList;

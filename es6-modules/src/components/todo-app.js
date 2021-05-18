@@ -1,11 +1,6 @@
-import { createElement } from '../lib'
-
-// const { createElement, noop } = require('../lib');
-export const { createElement, noop } = require('../lib');
-// const TodoList = require('./todo-list');
-export const TodoList = require('./todo-list');
-// const TodoForm = require('./todo-form');
-export const TodoForm = require('./todo-form');
+import { createElement, noop } from '../lib';
+import TodoList from './todo-list';
+import TodoForm from './todo-form';
 
 class TodoApp {
   constructor(container, nextId, todos, onUpdate = noop) {
@@ -57,4 +52,4 @@ class TodoApp {
   }
 }
 
-// module.exports = TodoApp;
+export default TodoApp;
