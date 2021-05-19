@@ -53,6 +53,7 @@ export default class App extends React.Component {
         this.state.todos.push(data);
         for (let i = 0; i < this.state.todos.length; i++) {
           newDataArr.push(this.state.todos[i]);
+          console.log(newDataArr);
         }
         this.setState({ todos: newDataArr });
       })
@@ -76,6 +77,34 @@ export default class App extends React.Component {
      * TIP: Be sure to SERIALIZE the updates in the body with JSON.stringify()
      * And specify the "Content-Type" header as "application/json"
      */
+
+    let index = null;
+    for (let i = 0; i < this.state.todos.length; i++) {
+      const todo = this.state.todos[i];
+      if (todo.todoId === todoId) {
+        index = i;
+      }
+    }
+    const isCompleted = this.state.todos[index].isCompleted;
+    const update = {
+      isCompleted: !isCompleted
+    };
+
+    const bodyJSON = JSON.stringify(update);
+    const headers = new Headers();
+    headers.set('Content-Type', 'application/json');
+    const req = {
+      method: 'PATCH',
+      headers: headers,
+      body: bodyJSON
+    };
+    fetch(`/api/todos/${todoId}`, req)
+      .then(res => res.json())
+      .then(updatedTodo => {
+        const newTodos = this.state.todos.slice();
+        newTodos[index] = updatedTodo;
+        this.setState({ todos: newTodos });
+      });
   }
 
   render() {
