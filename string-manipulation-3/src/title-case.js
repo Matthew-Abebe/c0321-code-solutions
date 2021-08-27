@@ -2,7 +2,6 @@
 
 function titleCase(title) {
   var wordsArr = title.split(' ');
-  // var minorWords = ['and', 'or', 'nor', 'but', 'a', 'an', 'the', 'as', 'at', 'by', 'for', 'in', 'of', 'on', 'per', 'to'];
   var words;
 
   for (let i = 0; i < wordsArr.length; i++) {
@@ -22,6 +21,18 @@ function titleCase(title) {
       wordsArr[j] = wordsArr[j].toUpperCase();
     }
 
+    if (wordsArr[j].includes(':') === true) {
+      for (let z = 0; z < wordsArr.length; z++) {
+        wordsArr[z] = wordsArr[z].charAt(0).toUpperCase() + wordsArr[z].slice(1);
+      }
+    }
+
+  }
+
+  for (let y = 0; y < wordsArr.length; y++) {
+    if (wordsArr[y] === 'For') {
+      wordsArr[y] = wordsArr[y].charAt(0).toLowerCase() + wordsArr[y].slice(1);
+    }
   }
 
   words = wordsArr.join(' ');
