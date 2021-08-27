@@ -9,10 +9,7 @@ function swapChars(firstIndex, secondIndex, string) {
   newArr[firstIndex] = second;
   newArr[secondIndex] = first;
 
-  console.log(first, second);
-
   string = newArr.join('');
-  console.log(string);
 
   return string;
 }
