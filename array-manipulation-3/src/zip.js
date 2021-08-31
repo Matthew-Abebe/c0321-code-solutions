@@ -12,7 +12,6 @@ function zip(first, second) {
       newArr.push([first[m], second[m]]);
     }
   }
-  console.log(newArr);
 
   return newArr;
 
