@@ -247,7 +247,6 @@ function shuffleDeck(cardDeck) {
     cardDeck[i] = cardDeck[j];
     cardDeck[j] = temp;
   }
-  console.log(cardDeck);
 }
 
 function dealCards(players, cardDeck) {
@@ -273,20 +272,15 @@ const points = {
   2: 2
 };
 
-const pointsArr = Object.values(points);
-console.log(pointsArr);
-
 function play() {
   const gameArr = [];
   let pointsObj = {};
   shuffleDeck(cardDeck);
   dealCards(players, cardDeck);
 
-  console.log(players);
   for (let i = 0; i < players.length; i++) {
 
     for (const property in points) {
-      console.log(property);
       if (property === players[i].hand.rank) {
         pointsObj = {
           name: players[i].name,
@@ -297,7 +291,19 @@ function play() {
     gameArr.push(pointsObj);
   }
 
-  console.log(gameArr);
+  const winner = {
+    name: '',
+    points: 0
+  };
+
+  for (let j = 0; j < gameArr.length; j++) {
+    if (gameArr[j].points > winner.points) {
+      winner.name = gameArr[j].name;
+      winner.points = gameArr[j].points;
+    }
+  }
+
+  console.log(winner.name);
 
 }
 
