@@ -252,18 +252,53 @@ function shuffleDeck(cardDeck) {
 
 function dealCards(players, cardDeck) {
   for (let i = 0; i < players.length; i++) {
-    for (let j = 0; j < cardDeck.length; j++) {
-      players[i].hand = cardDeck[j];
-    }
+    players[i].hand = cardDeck[i];
   }
-  console.log(players);
+
 }
 
-// const points {
+const points = {
+  Ace: 11,
+  King: 10,
+  Queen: 10,
+  Jack: 10,
+  10: 10,
+  9: 9,
+  8: 8,
+  7: 7,
+  6: 6,
+  5: 5,
+  4: 4,
+  3: 3,
+  2: 2
+};
 
-// }
+const pointsArr = Object.values(points);
+console.log(pointsArr);
 
-// function play()
+function play() {
+  const gameArr = [];
+  let pointsObj = {};
+  shuffleDeck(cardDeck);
+  dealCards(players, cardDeck);
 
-shuffleDeck(cardDeck);
-dealCards(players, cardDeck);
+  console.log(players);
+  for (let i = 0; i < players.length; i++) {
+
+    for (const property in points) {
+      console.log(property);
+      if (property === players[i].hand.rank) {
+        pointsObj = {
+          name: players[i].name,
+          points: points[property]
+        };
+      }
+    }
+    gameArr.push(pointsObj);
+  }
+
+  console.log(gameArr);
+
+}
+
+play();
