@@ -78,21 +78,21 @@ app.post('/api/notes', function (req, res, err) {
 
 app.delete('/api/notes/:id', function (req, res) {
   const id = req.params.id;
-  const result = JSON.stringify(notes, null, 2);
-
-  fs.writeFile('data.json', result, function () {
-
-    if (id < 0 || isNaN(id)) {
-      res.status(400);
-      res.json({ error: 'id must be a postive integer.' });
-    } else if (!notes[id]) {
-      res.status(404);
-      res.json({ error: `cannot find note with id ${id}.` });
-    } else {
-      delete notes[id];
-      res.status(204);
-    }
-  });
+  if (id < 0 || isNaN(id)) {
+    res.status(400).json({ error: 'id must be a postive integer.' });
+  } else if (!notes[id]) {
+    res.status(404).json({ error: `cannot find note with id ${id}.` });
+  } else {
+    delete notes[id];
+    const result = JSON.stringify(notes, null, 2);
+    fs.writeFile('data.json', `${result}`, err => {
+      if (err) {
+        res.status(500).json({ error: 'An unexpected error occurred.' });
+      } else {
+        res.status(200).json(req.body);
+      }
+    });
+  }
 });
 
 app.put('/api/notes/:id', function (req, res, err) {
