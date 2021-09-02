@@ -96,41 +96,30 @@ app.delete('/api/notes/:id', function (req, res) {
 });
 
 app.put('/api/notes/:id', function (req, res, err) {
-
   const id = req.params.id;
-  const updatedNote = req.body.content;
-
   if (id < 0 || isNaN(id)) {
-    res.status(400);
-    res.json({ error: 'id must be a postive integer.' });
-  } else if (typeof updatedNote !== 'string') {
-    res.status(400);
-    res.json({ error: 'content is a required field' });
-  } else if (notes[id] === undefined) {
-    res.status(404);
-    res.json({ error: `cannot find note with id ${id}.` });
+    res.status(400).json({ error: 'id must be a postive integer.' });
+  } else if (!notes[id]) {
+    res.status(404).json({ error: `cannot find note with id ${id}.` });
   } else {
-
-    const targetNote = notes[id];
-    const writtenNotes = notes;
-    targetNote.content = updatedNote;
-    const result = JSON.stringify(writtenNotes, null, 2);
-
-    console.log('typeof updatedNote: ', typeof updatedNote);
-    console.log('value updatedNote: ', updatedNote);
-
-    fs.writeFile('data.json', result, function (err) {
-      if (err) {
-        res.status(500);
-        console.error(error.message);
-        res.json({ error: 'something broke!' });
-      } else {
-        res.status(200);
-        res.json(result);
-      }
-    });
+    if (!req.body.content) {
+      res.status(400).json({ error: 'content is a required field' });
+    } else {
+      const updatedNote = req.body.content;
+      notes[id].content = updatedNote;
+      const result = JSON.stringify(notes, null, 2);
+      fs.writeFile('data.json', `${result}`, err => {
+        if (err) {
+          res.status(500).json({ error: 'An unexpected error occurred.' });
+        } else {
+          res.status(200).json(notes[id]);
+        }
+      });
+    }
   }
 });
+
+console.error(error.message);
 
 app.listen(3000, () => {
   // eslint-disable-next-line no-console
