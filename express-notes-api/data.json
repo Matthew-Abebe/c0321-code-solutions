@@ -8,11 +8,7 @@
     "id": 2
   },
   "3": {
-    "content": "In JavaScript, the value of `this` is determined when a function is called; not when it is defined.",
-    "id": 3
-  },
-  "4": {
     "content": "Inertia is a property of matter.",
-    "id": 4
+    "id": 3
   }
 }
