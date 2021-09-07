@@ -1,15 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ToggleSwitch from './toggles-switch';
 
-const toggleSwitch = (
-<label className="switch">ON OFF
-  <input type="checkbox" />
-  <span className="slider round"></span>
-  </label>
+ReactDOM.render(
+  <ToggleSwitch />,
+  document.querySelector('#root')
 );
-
-// function handleChange(event) {
-
-// }
-
-ReactDOM.render(toggleSwitch, document.querySelector('#root'));
