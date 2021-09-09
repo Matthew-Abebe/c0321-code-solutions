@@ -9,20 +9,23 @@ class CustomButton extends React.Component {
   }
 
   handleClick() {
-    const button = document.getElementById('button');
-
     this.setState({ isClicked: true });
-
-    if (this.state.isClicked === true) {
-      button.textContent = 'Thanks!';
-    } else {
-      button.textContent = 'Click Me.';
-    }
   }
 
   render() {
+    let text = 'Click Me.';
+    const isClicked = this.state.isClicked;
+
+    if (isClicked === true) {
+      text = 'Thanks!';
+    }
+
+    const button = <button onClick={this.handleClick}>{text}</button>;
+
     return (
-    <button id="button" onClick={this.handleClick}>Click Me.</button>
+      <div>
+        {button}
+      </div>
     );
   }
 }
