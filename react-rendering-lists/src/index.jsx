@@ -11,18 +11,13 @@ const pokedex = [
   { number: '039', name: 'Jigglypuff' }
 ];
 
-function RenderPokemonList() {
-  const pokemonList = pokedex.map((pokemon, index) => {
-    return (
-      <div key={index}>
-          <li>{pokemon.name}</li>
-      </div>
-    );
-  });
-  return pokemonList;
-}
+const pokemonList = pokedex.map((pokemon, index) =>
+  <div key={index}>
+    <li>{pokemon.name}</li>
+  </div>
+);
 
 ReactDOM.render(
-  <RenderPokemonList />,
+  <ul>{pokemonList}</ul>,
   element
 );
