@@ -15,9 +15,7 @@ function RenderPokemonList() {
   const pokemonList = pokedex.map((pokemon, index) => {
     return (
       <div key={index}>
-        <ul>
           <li>{pokemon.name}</li>
-        </ul>
       </div>
     );
   });
