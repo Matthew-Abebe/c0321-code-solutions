@@ -1,6 +1,5 @@
 const fs = require('fs');
 const express = require('express');
-const { error } = require('console');
 
 let nextId = 5;
 
@@ -118,8 +117,6 @@ app.put('/api/notes/:id', function (req, res, err) {
     }
   }
 });
-
-console.error(error.message);
 
 app.listen(3000, () => {
   // eslint-disable-next-line no-console
