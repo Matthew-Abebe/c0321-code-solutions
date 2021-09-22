@@ -8,8 +8,13 @@ class Stopwatch extends React.Component {
   }
 
   render() {
-    const stopwatch = <div id="stopwatch"></div>;
-    return stopwatch;
+
+    return (
+      <div>
+        <div id="stopwatch"></div>
+        <i className="fas fa-play fa-2x"></i>
+      </div>
+    );
   }
 }
 
