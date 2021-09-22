@@ -8,11 +8,7 @@
     "id": 2
   },
   "3": {
-    "content": "In JavaScript, the value of `this` is determined when a function is called; not when it is defined.",
+    "content": "Inertia is a property of matter.",
     "id": 3
-  },
-  "4": {
-    "content": "A closure is formed when a function retains access to variables in its lexical scope.",
-    "id": 4
   }
 }

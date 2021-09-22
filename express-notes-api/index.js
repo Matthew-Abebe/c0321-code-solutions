@@ -1,6 +1,5 @@
 const fs = require('fs');
 const express = require('express');
-const { json } = require('express');
 
 let nextId = 5;
 
@@ -36,12 +35,14 @@ app.get('/api/notes', function (req, res) {
 app.get('/api/notes/:id', function (req, res) {
   const id = req.params.id;
 
-  if (id < 0) {
+  if (id < 0 || isNaN(id)) {
     res.status(400);
     res.json({ error: 'id must be a postive integer.' });
   } else if (!notes[id]) {
     res.status(404);
-    res.json({ error: `cannot find note with id ${notes[id]}.` });
+    res.json({ error: `cannot find note with id ${id}.` });
+  } else {
+    res.status(200);
   }
 
   res.json(notes[id]);
@@ -76,25 +77,45 @@ app.post('/api/notes', function (req, res, err) {
 
 app.delete('/api/notes/:id', function (req, res) {
   const id = req.params.id;
-  const result = JSON.stringify(notes, null, 2);
+  if (id < 0 || isNaN(id)) {
+    res.status(400).json({ error: 'id must be a postive integer.' });
+  } else if (!notes[id]) {
+    res.status(404).json({ error: `cannot find note with id ${id}.` });
+  } else {
+    delete notes[id];
+    const result = JSON.stringify(notes, null, 2);
+    fs.writeFile('data.json', `${result}`, err => {
+      if (err) {
+        res.status(500).json({ error: 'An unexpected error occurred.' });
+      } else {
+        res.status(200).json(req.body);
+      }
+    });
+  }
+});
 
-  fs.writeFile('data.json', result, function (err) {
-
-    if (!id) {
-      res.status(400);
-      res.json({ error: 'An id is required' });
-    } else if (res[id]) {
-      res.status(404);
-      res.json({ error: 'id not found' });
-    } else if (err) {
-      res.status(500);
-      (console.error(err));
-      res.json({ error: 'An unexpected error occurred.' });
+app.put('/api/notes/:id', function (req, res, err) {
+  const id = req.params.id;
+  if (id < 0 || isNaN(id)) {
+    res.status(400).json({ error: 'id must be a postive integer.' });
+  } else if (!notes[id]) {
+    res.status(404).json({ error: `cannot find note with id ${id}.` });
+  } else {
+    if (!req.body.content) {
+      res.status(400).json({ error: 'content is a required field' });
     } else {
-      delete notes[id];
-      res.sendStatus(204);
+      const updatedNote = req.body.content;
+      notes[id].content = updatedNote;
+      const result = JSON.stringify(notes, null, 2);
+      fs.writeFile('data.json', `${result}`, err => {
+        if (err) {
+          res.status(500).json({ error: 'An unexpected error occurred.' });
+        } else {
+          res.status(200).json(notes[id]);
+        }
+      });
     }
-  });
+  }
 });
 
 app.listen(3000, () => {
